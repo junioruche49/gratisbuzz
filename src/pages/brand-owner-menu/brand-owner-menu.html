@@ -1,0 +1,8 @@
+<ion-list *ngIf="brand" >
+    <button ion-item (click)="select('viewBrand')">View Brand Page</button>
+    <button ion-item (click)="select('showStats')">View Brand Insights</button>
+    <button ion-item (click)="select('editBrand')">Edit Brand Page</button>
+    <button ion-item *ngIf="!brand.find" (click)="select('addToFinder')">Add to Brand Finder <ion-note>(<s>N3000</s> <i>free</i>)</ion-note> 90days</button>
+    <button ion-item *ngIf="brand.find" (click)="select('removeFromFinder')">Remove from Brand Finder</button>
+    <button ion-item color="danger" (click)="select('deleteBrand')">Delete</button>
+</ion-list>

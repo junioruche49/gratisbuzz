@@ -1,0 +1,27 @@
+<div class="my-comment-box" *ngIf="comment.user" >
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <div class="image" [image-style]="comment?.user.image" ></div>
+            </ion-col>
+            <ion-col>
+                <div class="name">
+                    {{comment?.user.username}}
+                </div>
+                <div class="comment">
+                    {{comment?.comment}}
+                </div>
+                <div class="time">
+                    {{comment?.created_at | amTimeAgo}}
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row class="delete_button">
+            <ion-col text-right>
+                <button ion-button small icon-only flat clear (click)="deleteComment()" *ngIf="isMyComment()" >
+                    <ion-icon name="trash" color="danger"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

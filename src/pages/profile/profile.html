@@ -1,0 +1,148 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button menuToggle icon-only>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Your Profile</ion-title>
+    </ion-navbar>
+
+    <ion-toolbar color="primary" padding-horizontal>
+        <ion-segment mode="ios" [(ngModel)]="page" color="dark">
+            <ion-segment-button value="account">
+                Account
+            </ion-segment-button>
+            <ion-segment-button value="brands">
+                Manage Brands
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+    <div class="top-content"></div>
+
+    <div class="main-content" *ngIf="user" >
+
+        <div [ngSwitch]="page">
+            <div *ngSwitchCase="'account'">
+
+                <div class="header">
+                    <div class="image">
+                        <image-pop [image]="user.image">
+                            <div class="img-box circle-img" [ngStyle]="{'background-image': 'url('+user.image+')'}"></div>
+                        </image-pop>
+                        <input type="file" name="image" id="fileInput" (change)="onFileChange($event)" style="display: none" />
+                        <ion-badge color="dark" (click)="getFile()">{{change}}</ion-badge>
+                    </div>
+                </div>
+
+                <div class="long-header">
+                    MAIN INFO
+                </div>
+
+                <div padding>
+                    <ion-row align-items-center class="form-detail">
+                        <ion-col>
+                            <div class="label">FULL NAME</div>
+                            <div class="info">{{user.name}}</div>
+                        </ion-col>
+                        <ion-col col-2 text-right>
+                        <button ion-button icon-only clear color="dark" (click)="editSomething('name', user.name)">
+                                <ion-icon name="mdi-feather"></ion-icon>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center class="form-detail">
+                        <ion-col>
+                            <div class="label">PHONE NUMBER</div>
+                            <div class="info">{{user.phone}}</div>
+                        </ion-col>
+                        <ion-col col-2 text-right>
+                            <button ion-button icon-only clear color="dark" (click)="editSomething('phone', user.phone)">
+                                <ion-icon name="mdi-feather"></ion-icon>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center class="form-detail">
+                        <ion-col>
+                            <div class="label">USERNAME</div>
+                            <div class="info">{{user.username}}</div>
+                        </ion-col>
+                        <ion-col col-2 text-right>
+                            <button ion-button icon-only clear color="dark" (click)="editSomething('username', user.username)">
+                                <ion-icon name="mdi-feather"></ion-icon>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-center class="form-detail">
+                        <ion-col>
+                            <div class="label">EMAIL</div>
+                            <div class="info">{{user.email}}</div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+
+                <!-- <div class="long-header fav-btn">
+                    <ion-row align-items-center>
+                        <ion-col>
+                            FAVORITE CATEGORIES
+                        </ion-col>
+                        <ion-col text-right>
+                            <button small clear ion-button icon-only color="dark">
+                                <ion-icon name="add"></ion-icon>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </div> -->
+
+                <!-- <div padding>
+                    <ion-chip *ngFor="let fav of ['Spa and Beauty', 'Electronics']" style="margin-right: 5px;">
+                        <ion-icon name="heart" color="primary"></ion-icon>
+                        <ion-label>{{fav}}</ion-label>
+                    </ion-chip>
+                </div> -->
+
+                <hr style="margin-bottom: 28px" />
+
+                <ion-row justify-content-center>
+                    <ion-col col-8 text-center>
+                        <label class="referal-text">REFERAL CODE</label>
+                        <div>
+                            <button ion-button block outline color="dark" class="referal-code">{{user.referal}}</button>
+                        </div>
+                        <div>
+                            <button ion-button block color="primary" class="no-shadow" (click)="shareCode()">INVITE A FRIEND</button>
+                        </div>
+                    </ion-col>
+                </ion-row>
+
+                <div>
+                    <button (click)="logoutUser()" ion-button full color="danger" class="signout-btn">SIGN OUT</button>
+                </div>
+
+            </div>
+
+            <div *ngSwitchCase="'brands'">
+                <div padding text-center *ngIf="!user.vendor" >
+                    Click the (+) button below to create a new brand profile
+                </div>
+                <div>
+                    <button ion-item class="just-clickable brand-items" *ngFor="let brand of user.vendor" (click)="gotoBrand(brand)">
+                        <brand-item [brand]="brand"></brand-item>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <ion-fab bottom right *ngIf="page == 'brands'">
+        <button ion-fab icon-only (click)="addBrand()">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

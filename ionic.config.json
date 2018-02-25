@@ -1,0 +1,8 @@
+{
+  "name": "gratisbuzz",
+  "app_id": "b7dd2379",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

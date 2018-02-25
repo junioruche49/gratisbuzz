@@ -1,0 +1,21 @@
+<ion-content>
+
+    <div class="instruction" *ngIf="images.length > 1">Swipe right for more</div>
+
+    <div class="cardbox" (click)="$event.stopPropagation()">
+        <ion-slides pager [initialSlide]="initial" class="imagesSlider" *ngIf="images.length > 1">
+            <ion-slide *ngFor="let img of images">
+                <img [src]="img" style="width: 100%" />
+            </ion-slide>
+        </ion-slides>
+
+        <img [src]="image" style="width: 100%" *ngIf="image != ''" />
+    </div>
+
+</ion-content>
+
+<ion-footer>
+    <button ion-fab class="primary" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+    </button>
+</ion-footer>

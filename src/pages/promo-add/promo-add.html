@@ -1,0 +1,143 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button icon-only (click)="dismiss()">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+        </ion-buttons>
+        <ion-title>{{header}}</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only (click)="submitPromo()">
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div class="form-main-content">
+        <brand-item [brand]="brand"></brand-item>
+
+        <div class="long-header">PROMOTION INFORMATION</div>
+
+        <div padding>
+            <div class="form-detail">
+                <div class="label">PROMOTION TITLE</div>
+                <div class="info desc">
+                    <ion-item class="no-design">
+                        <ion-textarea rows="2" [(ngModel)]="newPromo.short_description" placeholder="e.g 50% off all sales this month"></ion-textarea>
+                    </ion-item>
+                </div>
+            </div>
+
+
+            <div class="form-detail">
+                <div class="label">FULL DESCRIPTION</div>
+                <div class="info desc">
+                    <ion-item class="no-design">
+                        <ion-textarea rows="5" [(ngModel)]="newPromo.description" placeholder="Tell us what exactly this promotion is about"></ion-textarea>
+                    </ion-item>
+                </div>
+            </div>
+
+            <div class="form-detail">
+                <div class="label">CATEGORY</div>
+                <div class="info">
+                    <ion-select [(ngModel)]="newPromo.category" style="max-width: 100%" placeholder="What category is your promotion?">
+                        <ion-option *ngFor="let cat of categories" [value]="cat">{{cat}}</ion-option>
+                    </ion-select>
+                </div>
+            </div>
+            <div class="form-detail">
+                <div class="label">LOCATIONS</div>
+                <div class="info" *ngFor="let location of newPromo.location">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                {{location}}
+                            </ion-col>
+                            <ion-col col-2>
+                                <button ion-button small clear icon-only color="danger" style="float: right" (click)="removeLocation(location)">
+                                    <ion-icon name="close"></ion-icon>
+                                </button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+                <div class="info">
+                    <ion-row>
+                        <ion-col>
+                            <ion-select [(ngModel)]="state" style="max-width: 100%" placeholder="State">
+                                <ion-option *ngFor="let state of states" [value]="state" (ionSelect)="loadLgas(state)">{{state}}</ion-option>
+                            </ion-select>
+                        </ion-col>
+                        <ion-col>
+                            <ion-select [(ngModel)]="lga" style="max-width: 100%" placeholder="LGA">
+                                <ion-option *ngFor="let lga of lgas" [value]="lga" (ionSelect)="setLocation(lga)">{{lga}}</ion-option>
+                            </ion-select>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </div>
+
+        <div class="long-header" *ngIf="!edit_id">PROMOTION IMAGES</div>
+
+        <div padding *ngIf="!edit_id">
+            <div class="images-grid">
+                <ion-grid>
+                    <ion-row wrap>
+                        <ion-col col-6 align-self-end *ngFor="let image of newPromo.newImages" [ngStyle]="{'background-image': 'url('+image+')' }" class="img-box">
+
+                            <button ion-fab small icon-only color="danger" class="removeButton" (click)="removeImage(image)"><ion-icon name="close"></ion-icon></button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+            <div *ngIf="newPromo.newImages.length < 5" >
+                <button ion-button icon-left block outline (click)="getFile()">
+                    <ion-icon name="add"></ion-icon>
+                    Add an image
+                </button>
+                <input type="file" name="image" id="filePInput" (change)="onFileChange($event)" style="display: none" />
+            </div>
+            <div padding text-center *ngIf="newPromo.newImages.length >= 5">Maximum 5 images reached</div>
+        </div>
+
+        <div class="long-header" *ngIf="!edit_id">DURATION</div>
+
+        <div padding  *ngIf="!edit_id">
+            <ion-list radio-group [(ngModel)]="newPromo.length">
+                <ion-note>How Long</ion-note>
+
+                <ion-item>
+                    <ion-label>10 Days <ion-note>(<s>N2000</s> <i>free</i>)</ion-note></ion-label>
+                    <ion-radio checked="true" value="10"></ion-radio>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>20 Days <ion-note>(<s>N3500</s> <i>free</i>)</ion-note></ion-label>
+                    <ion-radio value="20"></ion-radio>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>30 Days <ion-note>(<s>N4500</s> <i>free</i>)</ion-note></ion-label>
+                    <ion-radio value="30"></ion-radio>
+                </ion-item>
+            </ion-list>
+            <div class="form-details">
+                <div class="label">Start Date</div>
+                <div class="info">
+                    <ion-datetime displayFormat="DDD D MMM, YYYY" pickerFormat="D MMM YYYY" max="2099-12-31" [(ngModel)]="newPromo.startDate"></ion-datetime>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</ion-content>

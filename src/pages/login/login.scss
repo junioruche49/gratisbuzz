@@ -1,0 +1,27 @@
+page-login {
+    ion-content{
+        background-image: url('../assets/img/signin_background.png');
+        background-size: cover;
+        color: white;
+
+        .header{
+            h3{
+                font-size: 3.5rem;
+                color: white;
+            }
+        }
+        .body{
+            margin-top: 35%;
+        }
+
+        .round-input{
+            background-color: white;
+            padding-left: 20px;
+            padding-right: 50px;
+            border-radius: 50px;
+        }
+    }
+    ion-footer{
+        color: white;
+    }
+}

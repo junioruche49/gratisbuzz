@@ -1,0 +1,150 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-title>Brand Name</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div class="top-content"></div>
+
+    <div class="main-content">
+
+        <image-pop [image]="brand.image">
+            <div class="image">
+                <div class="img-box circle-img" [ngStyle]="{'background-image': 'url('+brand.image+')'}"></div>
+            </div>
+        </image-pop>
+
+        <div class="long-header">MAIN INFO</div>
+
+        <div class="body" padding>
+
+            <div class="form-detail">
+                <div class="label">BRAND NAME</div>
+                <div class="info">{{brand.name}}</div>
+            </div>
+            <div class="form-detail" *ngIf="brand.full_description" >
+                <div class="label">DESCRIPTION</div>
+                <div class="info desc">
+                    {{brand.full_description}}
+                </div>
+            </div>
+            <div class="form-detail" *ngIf="brand.category" >
+                <div class="label">CATEGORY</div>
+                <div class="info">{{brand.category}}</div>
+            </div>
+            <div class="form-detail" *ngIf="brand.location" >
+                <div class="label">LOCATION</div>
+                <div class="info">{{brand.location}}</div>
+            </div>
+
+        </div>
+
+        <div class="long-header">CONTACT</div>
+
+        <div class="body" padding>
+
+            <div class="form-detail" *ngIf="brand.email" (click)="openEmail(brand.email)">
+                <div class="label">EMAIL</div>
+                <div class="info">{{brand.email}}</div>
+            </div>
+
+            <div class="form-detail" *ngIf="brand.phone" (click)="openCall(brand.phone)">
+                <div class="label">PHONE</div>
+                <div class="info">{{brand.phone}}</div>
+            </div>
+
+            <div class="form-detail" *ngIf="brand.website" (click)="openLink(brand.website, 'website')">
+                <div class="label">WEBSITE</div>
+                <div class="info">{{brand.website}}</div>
+            </div>
+
+            <div class="form-detail" *ngIf="brand.address">
+                <div class="label">ADDRESS</div>
+                <div class="info desc">{{brand.address}}</div>
+            </div>
+
+        </div>
+
+        <div class="long-header" *ngIf="hasSocial()">SOCIAL</div>
+
+        <div class="body" padding *ngIf="hasSocial()">
+
+            <ion-row align-items-center class="form-detail" *ngIf="brand.twitter" (click)="openLink(brand.twitter_link, 'twitter')">
+                <ion-col>
+                    <div class="label">TWITTER</div>
+                    <div class="info">{{brand.twitter}}</div>
+                </ion-col>
+                <ion-col col-1 text-right>
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row align-items-center class="form-detail" *ngIf="brand.facebook" (click)="openLink(brand.facebook_link, 'facebook')">
+                <ion-col>
+                    <div class="label">FACEBOOK</div>
+                    <div class="info">{{brand.facebook}}</div>
+                </ion-col>
+                <ion-col col-1 text-right>
+                    <ion-icon name="mdi-facebook"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row align-items-center class="form-detail" *ngIf="brand.instagram" (click)="openLink(brand.instagram_link, 'instagram')">
+                <ion-col>
+                    <div class="label">INSTAGRAM</div>
+                    <div class="info">{{brand.instagram}}</div>
+                </ion-col>
+                <ion-col col-1 text-right>
+                    <ion-icon name="mdi-instagram"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row align-items-center class="form-detail" *ngIf="brand.youtube" (click)="openLink(brand.youtube_link, 'youtube')">
+                <ion-col>
+                    <div class="label">YOUTUBE</div>
+                    <div class="info">{{brand.youtube}}</div>
+                </ion-col>
+                <ion-col col-1 text-right>
+                    <ion-icon name="logo-youtube"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+        </div>
+
+        <div class="long-header" *ngIf="hasStore()">STORE</div>
+
+        <div class="body" padding *ngIf="hasStore()">
+
+            <ion-row align-items-center class="form-detail" *ngIf="brand.store" (click)="openLink(brand.store, 'store')">
+                <ion-col>
+                    <div class="label">STORE LINK</div>
+                    <div class="info">{{brand.store}}</div>
+                </ion-col>
+                <ion-col col-1 text-right>
+                    <ion-icon name="mdi-shopping"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row align-items-center class="form-detail" *ngIf="brand.store2"(click)="openLink(brand.store2, 'store2')">
+                <ion-col>
+                    <div class="label">STORE LINK 2</div>
+                    <div class="info">{{brand.store2}}</div>
+                </ion-col>
+                <ion-col col-1 text-right>
+                    <ion-icon name="mdi-shopping"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+        </div>
+
+    </div>
+
+</ion-content>

@@ -1,0 +1,14 @@
+page-brands {
+    .brand-items{
+        padding-top: 10px;
+        padding-bottom: 5px;
+        padding-left: 8px !important;
+    }
+    ion-searchbar{
+        .searchbar-ios-cancel{
+            .button-inner{
+                color: color($colors, dark);
+            }
+        }
+    }
+}

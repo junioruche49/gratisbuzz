@@ -1,0 +1,25 @@
+<ion-content padding>
+
+            <div class="main-content">
+                <div text-center padding>
+                    This action is only available on the mobile app.
+                </div>
+
+                <div text-center padding>
+                    <h3>Download the app</h3>
+                </div>
+
+                <div text-center>
+                    <div text-center (click)="gotoDownloadLink()">
+                        <img style="width: 65%" src="../assets/img/get_on_playstore.png">
+                    </div>
+                </div>
+            </div>
+
+            <ion-fab bottom right>
+                <button ion-fab icon-only (click)="dismiss()">
+                    <ion-icon name="ios-arrow-down"></ion-icon>
+                </button>
+            </ion-fab>
+
+        </ion-content>

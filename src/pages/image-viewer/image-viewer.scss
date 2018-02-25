@@ -1,0 +1,23 @@
+page-image-viewer {
+    ion-content{
+        background-color: rgba(0,0,0,0.8) !important;
+
+        div.cardbox{
+            margin-top: 30% !important;
+            background-color: transparent;
+        }
+
+        .instruction{
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+    ion-footer{
+        button{
+            float: right;
+            margin: 16px;
+        }
+    }
+}

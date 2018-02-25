@@ -1,0 +1,36 @@
+<div class="item-block" [ngClass]="{'sponsored':sponsored}">
+    <ion-grid>
+        <ion-row align-items-center>
+            <ion-col col-3 class="image">
+                    <div [image-style]="ad.image[0]"></div>
+            </ion-col>
+            <ion-col col-9>
+                <div class="name">
+                    {{ad.vendor.name}}
+                    <ion-badge item-end color="danger" *ngIf="sponsored">sponsored</ion-badge>
+                </div>
+                <div class="category ellipsis">
+                    {{ad.description}}
+                </div>
+                <div class="location ellipsis" *ngIf="ad.location">{{ad.location.join(". ")}}</div>
+                <!-- <div class="location">{{ad.location}}</div> -->
+            </ion-col>
+        </ion-row>
+
+        <!-- <div class="extra" *ngIf="p_w || incentive || worth">
+            <ion-row>
+                <ion-col *ngIf="incentive">
+                    <span class="label">Incentive</span> <span class="value">{{incentive}}</span>
+                </ion-col>
+                <ion-col *ngIf="worth">
+                    <span class="label">Value</span> <span class="value">{{worth}}</span>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col *ngIf="p_w">
+                    <span class="label">Possible Winners</span> <span class="value">{{p_w}}</span>
+                </ion-col>
+            </ion-row>
+        </div> -->
+    </ion-grid>
+</div>

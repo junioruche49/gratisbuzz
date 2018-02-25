@@ -1,0 +1,26 @@
+<ion-content style="padding: 10px">
+    <ion-list>
+        <ion-item>
+            <ion-label stacked>Category</ion-label>
+            <ion-select [(ngModel)]="search.category" required>
+                <ion-option *ngFor="let bc of businessCategories" value="{{bc}}">{{bc}}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>State</ion-label>
+            <ion-select [(ngModel)]="newstate">
+                <ion-option *ngFor="let state of states" value="{{state}}" (ionSelect)="loadLgas(state)">{{state}}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>LGA</ion-label>
+            <ion-select [(ngModel)]="newlga">
+                <ion-option *ngFor="let lga of lgas" value="{{lga}}" (ionSelect)="setLocation(lga)">{{lga}}</ion-option>
+            </ion-select>
+        </ion-item>
+
+    </ion-list>
+    <button ion-button full color="primary" (click)="selectSearch()">Search</button>
+</ion-content>

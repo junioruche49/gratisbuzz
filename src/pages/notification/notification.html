@@ -1,0 +1,44 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button menuToggle icon-only>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Notifications</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="top-content"></div>
+
+    <div class="main-content">
+        <ion-item text-center *ngIf="messages.length < 1" >
+            No Notifications
+        </ion-item>
+        <button ion-item *ngFor="let message of messages" class="just-clickable" (click)="gotoDetails(message)" [ngClass]="{'unreadBar': !message.seen }">
+            <div class="notify-box">
+                <ion-row align-items-center>
+                    <ion-col col-3 text-left class="icon-box">
+                        <button mini ion-fab icon-only [ngClass]="getColor(message.type)">
+                            <ion-icon [name]="getIcon(message.type)"></ion-icon>
+                        </button>
+                    </ion-col>
+                    <ion-col col-9 class="details">
+                        <div class="subject">
+                            {{message.title}}
+                        </div>
+                        <div style="font-size: 1rem" class="ellipsis">{{message.message}}</div>
+                        <div class="time">
+                            {{message.created_at | amTimeAgo}}
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </button>
+
+    </div>
+</ion-content>

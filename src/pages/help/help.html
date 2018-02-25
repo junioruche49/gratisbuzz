@@ -1,0 +1,52 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button menuToggle icon-only>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Help Center</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="top-content"></div>
+
+    <div class="main-content">
+        <ion-list>
+            <button ion-item *ngFor="let p of pages" (click)="gotoContent(p.name)">
+                {{p.title}}
+            </button>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col text-center>
+                            <button ion-button block icon-only color="dark" clear (click)="openLink('https://www.facebook.com/Gratisbuzz-1573043502951241/')">
+                                <ion-icon name="logo-facebook"></ion-icon>
+                            </button>
+                        </ion-col>
+                        <ion-col text-center>
+                            <button ion-button block icon-only color="dark" clear (click)="openLink('https://twitter.com/@gratisbuzz')">
+                                <ion-icon name="logo-twitter"></ion-icon>
+                            </button>
+                        </ion-col>
+                        <ion-col text-center>
+                            <button ion-button block icon-only color="dark" clear (click)="openLink('https://instagram.com/gratisbuzz')">
+                                <ion-icon name="logo-instagram"></ion-icon>
+                            </button>
+                        </ion-col>
+                        <ion-col text-center>
+                            <button ion-button block icon-only color="dark" clear (click)="openLink('https://www.pinterest.com/gratisbuzz0492/')">
+                                <ion-icon name="logo-pinterest"></ion-icon>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
+    </div>
+
+</ion-content>

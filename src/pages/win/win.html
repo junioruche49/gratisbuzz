@@ -1,0 +1,28 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button menuToggle icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>Win</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card padding text-center *ngIf="loadingAds">
+        <ion-spinner></ion-spinner>
+    </ion-card>
+
+    <ion-card *ngFor="let livead of winAds" (click)="gotoAd(livead.ad, livead.question, livead)">
+        <ad-item [ad]="livead.ad" [sponsored]="livead.sponsored" [pw]="livead.ad.possible_winners" [incentive]="livead.ad.incentive" [worth]="livead.ad.incentive_amt"></ad-item>
+    </ion-card>
+
+    <ion-card padding text-center padding *ngIf="winAds.length < 1">
+        <h2>Stay tuned to win incentives on Gratis ad </h2>
+    </ion-card>
+
+</ion-content>

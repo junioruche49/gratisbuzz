@@ -1,0 +1,59 @@
+page-profile {
+    ion-content{
+        .header{
+            .image{
+                text-align: center;
+                padding: 25px 0px;
+
+                .img-box{
+                    width: 100px;
+                    height: 100px;
+                    max-width: 40%;
+                    margin: auto;
+                    background-size: contain;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-color: color($colors, dark);
+                }
+                ion-badge{
+                    margin-top: 5px;
+                }
+            }
+        }
+        .brand-items{
+            padding-top: 10px;
+            padding-bottom: 5px;
+            padding-left: 8px !important;
+        }
+        .fav-btn{
+            padding: 8px 16px;
+            ion-col{
+                padding: 0px;
+            }
+        }
+        .referal-text{
+            font-size: 1rem;
+            color: #ccc
+        }
+        .referal-code{
+            font-size: 2rem;
+            letter-spacing: 3px;
+        }
+        .signout-btn{
+            margin-bottom: 0px;
+            margin-top: 60px;
+        }
+    }
+
+    // .userBox{
+    //     text-align: center;
+    //     margin-top: 20px;
+    //     .image{
+    //         border-radius: 50%;
+    //         width: 25%;
+    //     }
+    // }
+    // .contactBox{
+    //     margin-top: 20px
+    // }
+}

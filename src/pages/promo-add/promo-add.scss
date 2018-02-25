@@ -1,0 +1,17 @@
+page-promo-add {
+    .images-grid {
+        .img-box {
+            background: no-repeat center center;
+            background-size: cover;
+            height: 130px;
+        }
+        .removeButton {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 25px;
+            height: 25px;
+            font-size: 40px;
+        }
+    }
+}

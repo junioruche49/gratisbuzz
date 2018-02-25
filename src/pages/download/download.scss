@@ -1,0 +1,9 @@
+page-download {
+    ion-content{
+        background-color: transparentize($color: color($colors, dark), $amount: .5) !important;
+        .main-content{
+            margin-top: 10%;
+            width: 100%;
+        }
+    }
+}

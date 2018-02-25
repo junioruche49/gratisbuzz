@@ -1,0 +1,20 @@
+<div class="item-block" [ngClass]="{'sponsored':sponsored}">
+    <ion-grid>
+        <ion-row align-items-center>
+            <ion-col col-3 class="image">
+                <div [image-style]="promo.image"></div>
+            </ion-col>
+            <ion-col col-9>
+                <div class="name">
+                    {{promo.short_description}}
+                    <ion-badge item-end color="danger" *ngIf="sponsored" >sponsored</ion-badge>
+                </div>
+                <div class="category ellipsis">
+                    {{promo.description}}
+                </div>
+                <!-- <div class="location ellipsis">{{promo.location.join(". ")}}</div> -->
+                <div class="location ellipsis" *ngIf="promo.location">{{promo.location.join(". ")}}</div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>

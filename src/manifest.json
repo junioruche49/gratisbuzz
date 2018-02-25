@@ -1,0 +1,13 @@
+{
+  "name": "Gratisbuzz",
+  "short_name": "Gratisbuzz",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/imgs/logo.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#fcb903aa",
+  "theme_color": "#fcb903aa"
+}

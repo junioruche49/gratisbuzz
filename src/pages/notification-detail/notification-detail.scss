@@ -1,0 +1,45 @@
+page-notification-detail {
+    .header{
+        .icon-box{
+            button{
+                color: white;
+                font-size: 2rem;
+                box-shadow: none;
+                margin: 0px;
+            }
+        }
+
+        .subject{
+            font-weight: bold;
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+        .time{
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-top: 20px;
+        }
+    }
+
+    .footer{
+        .time, .date{
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+    }
+    .blueColor{
+        background-color: #00b0ff;
+    }
+    .redColor{
+        background-color: #4e342e;
+    }
+    .yellowColor{
+        background-color: #ffea00;
+    }
+    .greenColor{
+        background-color: #7c4dff;
+    }
+    .winColor{
+        background-color: darkgoldenrod;
+    }
+}

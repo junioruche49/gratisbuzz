@@ -1,0 +1,98 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button menuToggle icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title *ngIf="promo.vendor" >{{promo.vendor.name}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div class="top-content"></div>
+    <div class="main-content">
+        <div text-center *ngIf="loading" >
+            <ion-spinner></ion-spinner>
+        </div>
+        <div *ngIf="!loading" >
+            <div class="images">
+                <show-images [images]="promo.image"></show-images>
+            </div>
+
+            <div padding class="body">
+                <div class="title">
+                    {{promo.short_description}}
+                </div>
+            </div>
+
+            <div padding class="body">
+                <div class="desc">
+                    {{promo.description}}
+                </div>
+            </div>
+
+            <ion-grid (click)="gotoBrand()">
+                <ion-row align-items-center>
+                    <ion-col>
+                        <brand-item class="brand-item" [brand]="promo.vendor"></brand-item>
+                    </ion-col>
+                    <ion-col col-1>
+                        <ion-icon name="ios-radio-button-on"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+            <ion-card class="inter-box">
+                <ion-row>
+                    <ion-col text-center>
+                        <button ion-button color="primary" clear small icon-start class="active" *ngIf="!likeable">
+                            <ion-icon name='thumbs-up'></ion-icon> &nbsp;
+                            {{promo.stats.likes}}
+                        </button>
+                        <button ion-button color="primary" clear small icon-start *ngIf="likeable"  (click)="submitLike()">
+                            <ion-icon name='thumbs-up'></ion-icon> &nbsp;
+                            {{promo.stats.likes}}
+                        </button>
+                    </ion-col>
+                    <ion-col text-center>
+                        <button ion-button color="primary" clear small icon-start>
+                            <ion-icon name='text'></ion-icon> &nbsp;
+                            {{promo.stats.comments}}
+                        </button>
+                    </ion-col>
+                    <ion-col text-center>
+                        <button ion-button color="primary" clear small icon-start (click)="share()">
+                            <ion-icon name='share-alt'></ion-icon> &nbsp;
+                            {{promo.stats.shares}}
+                        </button>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+
+            <div padding class="comments">
+                <div class="comment-text">COMMENTS ({{promo.comments.length}})</div>
+                <div class="new-comment">
+                    <ion-row>
+                        <ion-col col-2 text-center>
+                            <img  [src]="user_image" class="circle-img" />
+                        </ion-col>
+                        <ion-col>
+                            <ion-textarea rows="5" [(ngModel)]="promocomment" placeholder="Your comment goes here"></ion-textarea>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col text-right>
+                            <button ion-button small [disabled]="postLoading" (click)="submitComment()">post</button>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <hr />
+
+                <comment-box [comment]="comment" *ngFor="let comment of promo.comments" ></comment-box>
+            </div>
+        </div>
+    </div>
+</ion-content>

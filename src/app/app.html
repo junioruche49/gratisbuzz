@@ -1,0 +1,41 @@
+<ion-menu [content]="content">
+
+    <ion-content class="app-menu">
+        <div class="header" padding-vertical>
+            <ion-row align-items-center>
+                <ion-col>
+                    <image-pop [image]="user.image">
+                        <!-- <div [image-style]="user.image"></div> -->
+                        <img class="avatar" [src]="user.image" />
+                    </image-pop>
+                </ion-col>
+                <ion-col> 
+                    <div class="name">{{user.name}}</div>
+                    <div class="points">{{pointsCount.count}} points</div>
+                </ion-col>
+                <ion-col text-right menuClose (click)="openPage({component:'NotificationPage'})">
+                    <ion-icon name="notifications" class="notificon"></ion-icon>
+                    <ion-badge small color="danger" item-right class="notifnum" *ngIf="messageCount.count > 0" >{{messageCount.count}}</ion-badge>
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <div class="body">
+            <ion-list>
+                <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="items">
+                    {{p.title}}
+                </button>
+            </ion-list>
+        </div>
+
+        <div class="footer" padding>
+            <ion-list>
+                <button menuClose ion-item class="items" (click)="openPage({component:'HelpPage'})">
+                    Help Center
+                </button>
+            </ion-list>
+        </div>
+    </ion-content>
+
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>

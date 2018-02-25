@@ -1,0 +1,164 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button menuToggle icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>{{ad?.vendor?.name}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div class="top-content"></div>
+    <div class="main-content">
+        <div class="images">
+            <show-images [images]="ad?.image"></show-images>
+        </div>
+
+        <!-- <div padding class="body">
+            <div class="title">
+                Et magni explicabo corporis deleniti voluptatem vero et error
+            </div>
+        </div> -->
+
+
+        <div padding class="body">
+            <div class="desc">
+                {{ad.description}}
+            </div>
+        </div>
+
+        <ion-grid (click)="gotoBrand()">
+            <ion-row align-items-center>
+                <ion-col>
+                    <brand-item class="brand-item" [brand]="ad.vendor"></brand-item>
+                </ion-col>
+                <ion-col col-1>
+                    <ion-icon name="ios-radio-button-on"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-grid class="extra">
+            <ion-row>
+                <ion-col *ngIf="ad.incentive">
+                    <span class="label">Incentive</span> <span class="value">{{ad.incentive}}</span>
+                </ion-col>
+                <ion-col *ngIf="ad.incentive_amt">
+                    <span class="label">Value</span> <span class="value">{{ad.incentive_amt}}</span>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col *ngIf="ad.possible_winners">
+                    <span class="label">Possible Winners</span> <span class="value">{{ad.possible_winners}}</span>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-card class="inter-box">
+            <ion-row>
+                <ion-col text-center>
+                    <button ion-button color="primary" clear small icon-start class="active" *ngIf="!likeable">
+                        <ion-icon name='thumbs-up'></ion-icon> &nbsp;
+                        {{ad.likes.length}}
+                    </button>
+                    <button ion-button color="primary" clear small icon-start *ngIf="likeable"  (click)="submitLike()">
+                        <ion-icon name='thumbs-up'></ion-icon> &nbsp;
+                        {{ad.likes.length}}
+                    </button>
+                </ion-col>
+                <ion-col text-center>
+                    <button ion-button color="primary" clear small icon-start>
+                        <ion-icon name='text'></ion-icon> &nbsp;
+                        {{ad.comments.length}}
+                    </button>
+                </ion-col>
+                <ion-col text-center>
+                    <button ion-button color="primary" clear small icon-start (click)="share()">
+                        <ion-icon name='share-alt'></ion-icon> &nbsp;
+                        {{ad.shares.length}}
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+
+        <div class="long-header" *ngIf="livead" >
+            ANSWER TO WIN
+
+            <div style="font-weight: lighter">
+                <div *ngIf="question_show === 0" >
+                    Chance to win begins {{livead.question_begin | amTimeAgo }}
+                </div>
+                <div *ngIf="question_show === 1" >
+                    Chance to win ends {{livead.end | amTimeAgo}}
+                </div>
+                <div *ngIf="question_show === 2" >Chance to win ended {{livead.end | amTimeAgo}}</div>
+            </div>
+        </div>
+
+        <div *ngIf="question_show === 1 && livead">
+            <div padding>
+                {{question.question}}
+            </div>
+            <div padding *ngIf="answered">
+                <span ion-text color="dark"><b>You have answered this question</b></span><br />
+            </div>
+
+            <div *ngIf="!answered">
+                <ion-list *ngIf="question.type == 'theory'">
+                    <ion-item>
+                        <ion-textarea rows='2' [(ngModel)]="answer" placeholder="your answer"></ion-textarea>
+                    </ion-item>
+                </ion-list>
+                <ion-list radio-group [(ngModel)]="answer" *ngIf="question.type == 'obj'">
+                    <ion-item>
+                        <ion-label>{{question.option_a}}</ion-label>
+                        <ion-radio value="a"></ion-radio>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{question.option_b}}</ion-label>
+                        <ion-radio value="b"></ion-radio>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{question.option_c}}</ion-label>
+                        <ion-radio value="c"></ion-radio>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>{{question.option_d}}</ion-label>
+                        <ion-radio value="d"></ion-radio>
+                    </ion-item>
+                </ion-list>
+                <div padding-horizontal text-right style="padding-bottom: 16px;">
+                    <button ion-button small [disabled]="answer == null" (click)="confirmSubmitAnswer()">
+                        Answer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div padding class="comments">
+            <div class="comment-text">COMMENTS ({{ad.comments.length}})</div>
+            <div class="new-comment">
+                <ion-row>
+                    <ion-col col-2 text-center>
+                        <img [src]="user_image" class="circle-img" />
+                    </ion-col>
+                    <ion-col>
+                        <ion-textarea rows="5" [(ngModel)]="adcomment" placeholder="Your comment goes here"></ion-textarea>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col text-right>
+                        <button ion-button small [disabled]="postLoading" (click)="submitComment()">post</button>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <hr />
+
+            <comment-box [comment]="comment" *ngFor="let comment of ad.comments" ></comment-box>
+        </div>
+    </div>
+</ion-content>

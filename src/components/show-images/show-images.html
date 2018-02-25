@@ -1,0 +1,9 @@
+<div>
+    <ion-slides #imgSlider pager class="imagesSlider" *ngIf="multipleImage">
+        <ion-slide *ngFor="let image of multipleImage; let i = index" (click)="openImagesViewer(i)">
+            <img [src]="image" />
+        </ion-slide>
+    </ion-slides>
+
+    <img [src]="singleImage" *ngIf="singleImage" (click)="openImagesViewer()">
+</div>

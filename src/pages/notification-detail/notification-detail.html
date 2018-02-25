@@ -1,0 +1,49 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-title>Notification</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div class="top-content"></div>
+
+    <div class="main-content">
+
+        <div padding class="header">
+            <div class="icon-box">
+                <button mini ion-fab icon-only [ngClass]="getColor(message.type)">
+                    <ion-icon [name]="getIcon(message.type)"></ion-icon>
+                </button>
+            </div>
+            <div class="subject">
+                {{message.title}}
+            </div>
+            <div class="time">
+                {{message.created_at | amTimeAgo}}
+            </div>
+        </div>
+
+        <hr />
+
+        <div padding class="body">
+            <div [innerHTML]="message.message | sanitizeHtml"></div>
+        </div>
+
+        <hr />
+
+        <div padding class="footer">
+            <ion-row>
+                <ion-col class="date">
+                    {{message.created_at | date:'yMMMd'}}
+                </ion-col>
+                <ion-col text-right class="time">
+                    {{message.created_at | date:'h:mm a'}}
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+</ion-content>

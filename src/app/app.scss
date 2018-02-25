@@ -1,0 +1,215 @@
+// http://ionicframework.com/docs/theming/
+
+.app-menu{
+    background-color: color($colors, dark);
+    color: white;
+    padding: 30px;
+
+    .header{
+        margin: auto 16px;
+        border-bottom: 1px solid #5f5868;
+        .name{
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .points{
+            font-size: 1.2rem;
+            color: #999999;
+        }
+        img{
+            border-radius: 50%;
+            max-width: 80%;
+            margin: auto
+        }
+        .notificon{
+            font-size: 2.5rem;
+            transform: rotate(340deg)
+        }
+        .notifnum{
+            border-radius: 50%;
+            min-width: 20px;
+            min-height: 20px;
+            padding: 0px;
+            margin: 0px;
+            padding-top: 3px;
+        }
+    }
+    .body{
+        margin: auto 16px;
+        border-bottom: 1px solid #5f5868;
+    }
+    .items{
+        background-color: transparent;
+        color: white;
+        padding-top: 5px;
+        .item-inner{
+            border-bottom: 0px solid transparent;
+        }
+    }
+}
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.top-content{
+    background-color: color($colors, primary);
+    height: 20px;
+}
+
+ion-content, ion-content.content-md{
+    background-color: color($colors, dark);
+}
+ion-content.content-md.back-white{
+    background-color: white;
+}
+
+.main-content{
+    width: 93%;
+    margin: auto;
+    height: 99%;
+    min-height: 500px;
+    overflow: scroll;
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-radius: 5px;
+    margin-top: -20px;
+}
+
+.form-main-content{
+    width: 93%;
+    margin: auto;
+    background-color: white;
+}
+
+.just-clickable{
+    &.item{
+        padding-left: 0px;
+        .item-inner{
+            padding-right: 0px;
+            border-bottom: 0px solid transparent;
+            .label-md{
+                margin: 0px;
+            }
+        }
+    }
+}
+.form-detail{
+    margin-bottom: 25px;
+    .label{
+        color: silver;
+        font-size: 1.1rem;
+        font-weight: lighter;
+        margin-bottom: 3px;
+    }
+    .info{
+        font-size: 1.8rem;
+        &.desc{
+            font-size: 1.5rem;
+        }
+    }
+}
+.long-header{
+    background-color: color($colors, primary);
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.no-shadow{
+    box-shadow: none;
+}
+.circle-img{
+    border-radius: 50%;
+}
+.item-cover {
+    width: 0;
+    height: 0;
+}
+
+.ellipsis {
+    max-width: 80%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+@font-face {
+    font-family: 'EncodeSans';
+    font-weight: 300;
+    font-style: normal;
+    src: url('../assets/fonts/encode-sans/EncodeSans-Regular.eot');
+    src: url('../assets/fonts/encode-sans/EncodeSans-Regular.eot?#iefix') format('embedded-opentype'),
+    local('EncodeSans Regular'),
+    local('EncodeSans'),
+    url('../assets/fonts/encode-sans/EncodeSans-Regular.woff') format('woff'),
+    url('../assets/fonts/encode-sans/EncodeSans-Regular.ttf') format('truetype'),
+    url('../assets/fonts/encode-sans/EncodeSans-Regular.svg') format('svg');
+}
+@font-face {
+    font-family: 'EncodeSansBold';
+    font-weight: 600;
+    font-style: bold;
+    src: url('../assets/fonts/encode-sans/EncodeSans-SemiBold.eot');
+    src: url('../assets/fonts/encode-sans/EncodeSans-SemiBold.eot?#iefix') format('embedded-opentype'),
+    local('EncodeSansBold SemiBold'),
+    local('EncodeSansBold'),
+    url('../assets/fonts/encode-sans/EncodeSans-SemiBold.woff') format('woff'),
+    url('../assets/fonts/encode-sans/EncodeSans-SemiBold.ttf') format('truetype'),
+    url('../assets/fonts/encode-sans/EncodeSans-SemiBold.svg') format('svg');
+}
+
+@import './../../node_modules/mdi/scss/materialdesignicons';
+
+$mdi-ion-md-css-prefix: "ion-md-mdi";
+$mdi-ion-ios-css-prefix: "ion-ios-mdi";
+
+.ion-mdi:before {
+  font-family: "Material Design Icons";
+}
+
+@each $key, $value in $mdi-icons {
+    .#{$mdi-ion-md-css-prefix}-#{$key}:before,
+    .#{$mdi-ion-ios-css-prefix}-#{$key}:before {
+        @extend .ion-mdi:before;
+        content: char($value);
+    }
+}
+.#{$mdi-ion-md-css-prefix}-blank:before,
+.#{$mdi-ion-ios-css-prefix}-blank:before {
+    @extend .ion-mdi:before;
+    content: "\F68C";
+    visibility: hidden;
+}
+
+input, textarea {
+    -webkit-user-select: auto !important;
+    -khtml-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    -o-user-select: auto !important;
+    user-select: auto !important;
+}
+.backdrop:not(.visible),
+.loading-container:not(.visible) { display: none; }
+
+ion-item.no-design{
+    background-color: transparent;
+    padding-left: 0px;
+    .item-inner{
+        border-bottom: 0px solid transparent !important;
+        box-shadow: none !important;
+    }
+}

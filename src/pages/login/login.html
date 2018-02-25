@@ -1,0 +1,32 @@
+<ion-header no-border>
+    <ion-navbar color="transparent" no-border>
+        <ion-title></ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+    <div text-center class="header">
+        <h3>Sign In</h3>
+    </div>
+
+    <div class="body">
+        <form (submit)="doLogin()">
+            <ion-item class="no-design" padding>
+                <ion-input type="email" placeholder="Email" [(ngModel)]="account.email" name="email" class="round-input"></ion-input>
+            </ion-item>
+            <ion-item class="no-design" padding>
+                <ion-input type="password" placeholder="Password" [(ngModel)]="account.password" name="password" class="round-input"></ion-input>
+            </ion-item>
+            <div padding text-center>
+                <button [hidden]="loading" ion-button round color="dark" class="no-shadow">Sign In</button>
+                <button [disabled]="loading" [hidden]="!loading" ion-button round color="dark"  class="no-shadow"><ion-spinner></ion-spinner></button>
+            </div>
+        </form>
+    </div>
+</ion-content>
+<ion-footer no-border>
+    <div padding text-center>
+        <span (click)="forgotPassword()">Forgot password?</span>
+    </div>
+</ion-footer>

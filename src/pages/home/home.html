@@ -1,0 +1,106 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button menuToggle icon-only>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="back-white">
+    <div class="top-content"></div>
+
+    <div class="main-content">
+        <ion-slides #adSlider pager *ngIf="ads && ads.length" autoplay="3000" loop="true" speed="500" pager="true">
+            <ion-slide *ngFor="let item of ads" (click)=openLink(item.link)>
+                <img [src]="item.image" />
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <!-- <ion-grid class="navGrid">
+        <ion-row>
+            <ion-col col-4>
+                <div ion-button class="grid-box" (click)="gotoTab('adList')">
+                    <div>
+                        <div class="iconBlock">
+                            <ion-icon name="mdi-access-point" item-left></ion-icon>
+                        </div>
+                        <div class="titleBlock">
+                            <span>Gratis Ad</span>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div ion-button class="grid-box" (click)="gotoTab('promo')">
+                    <div>
+                        <div class="iconBlock">
+                            <ion-icon name="mdi-bullhorn" item-left></ion-icon>
+                        </div>
+                        <div class="titleBlock">
+                            <span>Promos</span>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div ion-button class="grid-box" (click)="gotoPage('brands')" id="brandBtn">
+                    <div>
+                        <div class="iconBlock">
+                            <ion-icon name="book" item-left></ion-icon>
+                        </div>
+                        <div class="titleBlock">
+                            <span>Brands</span>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col col-4>
+                <div ion-button class="grid-box" (click)="gotoPage('notifications')">
+                    <div>
+                        <div class="iconBlock">
+                            <ion-icon name="notifications" item-left></ion-icon>
+                        </div>
+                        <div class="titleBlock">
+                            <span>Notifications</span>
+                            <ion-badge small color="danger" *ngIf="notificationsNum > 0" item-right>{{notificationsNum}}</ion-badge>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div ion-button class="grid-box" (click)="gotoPage('winners')">
+                    <div>
+                        <div class="iconBlock">
+                            <ion-icon name="podium" item-left></ion-icon>
+                        </div>
+                        <div class="titleBlock">
+                            <span>Winners</span>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div ion-button class="grid-box" (click)="gotoTab('profile')">
+                    <div>
+                        <div class="iconBlock">
+                            <ion-icon name="person" item-left></ion-icon>
+                        </div>
+                        <div class="titleBlock">
+                            <span>Profile</span>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid> -->
+</ion-content>

@@ -1,0 +1,24 @@
+page-brand-owner {
+    ion-content{
+        .header{
+            margin-top: 20px;
+
+            brand-item{
+                .image{
+                    div{
+                        width: 55px !important;
+                        height: 55px !important;
+                    }
+                }
+            }
+        }
+        promo-item, ad-item{
+            .image{
+                div{
+                    width: 55px !important;
+                    height: 55px !important;
+                }
+            }
+        }
+    }
+}

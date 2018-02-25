@@ -1,0 +1,97 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>{{brand.name}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="top-content"></div>
+    <div class="main-content">
+
+        <div class="header">
+            <ion-row align-items-center>
+                <ion-col col-10>
+                    <brand-item [brand]="brand"></brand-item>
+                </ion-col>
+                <ion-col col-2 text-left>
+                    <button ion-button icon-only clear color="dark" (click)="openMenu($event)">
+                        <ion-icon name="ios-arrow-down"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row padding-horizontal>
+                <ion-col col-6>
+                    <button ion-button round block class="no-shadow" (click)="addGratis()">New Gratis Ad</button>
+                </ion-col>
+                <ion-col col-6>
+                    <button ion-button round block class="no-shadow" (click)="addPromo()">New Promo Ad</button>
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <hr />
+
+        <div>
+            <ion-segment [(ngModel)]="ad_type" color="dark">
+                <ion-segment-button value="ads">
+                    Gratis Ads
+                </ion-segment-button>
+                <ion-segment-button value="promos">
+                    Promotions
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+
+        <div class="lists-place">
+            <div [ngSwitch]="ad_type">
+
+                <div *ngSwitchCase="'ads'">
+                    <ion-row align-items-center *ngFor="let ad of ads">
+                        <ion-col col-10>
+                            <ad-item [ad]="ad" [sponsored]="false" (click)="viewAd(ad)"></ad-item>
+                        </ion-col>
+                        <ion-col col-2 text-left>
+                            <button ion-button icon-only clear color="dark" (click)="openAdMenu($event, ad)">
+                                <ion-icon name="more"></ion-icon>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+
+                    <div class="long-header" text-center *ngIf="(ads.length < 1) && (!loadingAds)">NO GRATIS ADS</div>
+                    <div class="long-header" text-center *ngIf="loadingAds">
+                        <ion-spinner></ion-spinner>
+                    </div>
+                </div>
+
+                <div *ngSwitchCase="'promos'">
+                    <ion-row align-items-center *ngFor="let promo of promos">
+                        <ion-col col-10>
+                            <promo-item [promo]="promo" [sponsored]="false" (click)="viewPromo(promo)"></promo-item>
+                        </ion-col>
+                        <ion-col col-2 text-left>
+                            <button ion-button icon-only clear color="dark" (click)="openPromoMenu($event, promo)">
+                                <ion-icon name="more"></ion-icon>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                    <div class="long-header" text-center *ngIf="(promos.length < 1) && (!loadingPromos)">NO PROMOTIONS</div>
+                    <div class="long-header" text-center *ngIf="loadingPromos">
+                        <ion-spinner></ion-spinner>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</ion-content>

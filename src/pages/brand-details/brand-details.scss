@@ -1,0 +1,17 @@
+page-brand-details {
+    .image{
+        text-align: center;
+        padding: 35px 0px;
+
+        .img-box{
+            width: 100px;
+            height: 100px;
+            max-width: 40%;
+            margin: auto;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: color($colors, dark);
+        }
+    }
+}

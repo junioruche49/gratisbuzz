@@ -1,0 +1,32 @@
+page-welcome {
+    ion-content{
+        background-image: url('../assets/img/welcome_background.png');
+        background-size: cover;
+        color: white;
+
+        .header{
+            margin-top: 10%;
+            span{
+                font-weight: bold;
+                font-size: 3rem;
+                color: #fcb903;
+                padding: 8px;
+                display: inline-block;
+                background-color: white;
+            }
+        }
+        .body{
+            margin-top: 60%;
+        }
+
+        h3, .button-md {
+            font-weight: bold;
+            color: white;
+        }
+        p{
+            color: white;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+}

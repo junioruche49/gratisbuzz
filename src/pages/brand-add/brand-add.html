@@ -1,0 +1,233 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button icon-only (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{header}}</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only (click)="submitBrand()">
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>  oi
+
+</ion-header>
+
+<ion-content>
+    <!-- <div class="top-content"></div> -->
+
+    <div class="form-main-content">
+
+        <!-- <form [formGroup]="newBrandForm"> -->
+            <div class="image">
+                <image-pop [image]="newBrand.image">
+                    <div class="img-box circle-img" [ngStyle]="{'background-image': 'url('+newBrand.image+')'}">
+                        <span [hidden]="newBrand.image" style="color: white; padding-top: 30%; display: block">Brand<br />Logo</span>
+                    </div>
+                </image-pop>
+                <ion-badge color="dark" (click)="getFile()">change</ion-badge>
+                <input type="file" name="image" id="fileVInput" (change)="onFileChange($event)" style="display: none" />
+            </div>
+
+            <div class="long-header">MAIN INFO</div>
+
+            <div class="body" padding>
+
+                <div class="form-detail">
+                    <div class="label">BRAND NAME</div>
+                    <div class="info">
+                        <ion-item class="no-design">
+                            <ion-input type="text" [(ngModel)]="newBrand.name" placeholder="What is your brand name?"></ion-input>
+                        </ion-item>
+                    </div>
+                </div>
+                <!-- <div class="form-detail">
+                    <div class="label">SHORT DESCRIPTION</div>
+                    <div class="info desc">
+                        <ion-item class="no-design">
+                            <ion-textarea rows="3" [(ngModel)]="newBrand.short_description" placeholder="Let us know your brand"></ion-textarea>
+                        </ion-item>
+                    </div>
+                </div> -->
+                <div class="form-detail">
+                    <div class="label">DESCRIPTION</div>
+                    <div class="info desc">
+                        <ion-item class="no-design">
+                            <ion-textarea rows="5" [(ngModel)]="newBrand.full_description" placeholder="Let us know your brand even more"></ion-textarea>
+                        </ion-item>
+                    </div>
+                </div>
+                <div class="form-detail">
+                    <div class="label">CATEGORY</div>
+                    <div class="info">
+                        <ion-select [(ngModel)]="newBrand.category" style="max-width: 100%" placeholder="What category is your brand?">
+                            <ion-option *ngFor="let cat of categories" [value]="cat">{{cat}}</ion-option>
+                        </ion-select>
+                    </div>
+                </div>
+                <div class="form-detail">
+                    <div class="label">LOCATION</div>
+                    <div class="info">
+                        <ion-row>
+                            <ion-col>
+                                <ion-select [(ngModel)]="state" style="max-width: 100%" placeholder="State">
+                                    <ion-option *ngFor="let state of states" [value]="state" (ionSelect)="loadLgas(state)">{{state}}</ion-option>
+                                </ion-select>
+                            </ion-col>
+                            <ion-col>
+                                <ion-select [(ngModel)]="lga" style="max-width: 100%" placeholder="LGA">
+                                    <ion-option *ngFor="let lga of lgas" [value]="lga" (ionSelect)="setLocation(lga)">{{lga}}</ion-option>
+                                </ion-select>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="long-header">CONTACT DETAILS</div>
+
+            <div class="body" padding>
+
+                <div class="form-detail">
+                    <div class="label">BRAND'S EMAIL ADDRESS</div>
+                    <div class="info">
+                        <ion-item class="no-design">
+                            <ion-input type="email" [(ngModel)]="newBrand.email" placeholder="What is your brand email?"></ion-input>
+                        </ion-item>
+                    </div>
+                </div>
+
+                <div class="form-detail">
+                    <div class="label">CONTACT NUMBER</div>
+                    <div class="info">
+                        <ion-item class="no-design">
+                            <ion-input type="tel" [(ngModel)]="newBrand.phone" placeholder="What is your brand phone number?"></ion-input>
+                        </ion-item>
+                    </div>
+                </div>
+
+                <div class="form-detail">
+                    <div class="label">BRAND'S WEBSITE</div>
+                    <div class="info">
+                        <ion-item class="no-design">
+                            <ion-input type="url" [(ngModel)]="newBrand.website" placeholder="What is your brand website?"></ion-input>
+                        </ion-item>
+                    </div>
+                </div>
+
+                <div class="form-detail">
+                    <div class="label">ADDRESS</div>
+                    <div class="info desc">
+                        <ion-item class="no-design">
+                            <ion-textarea row="2" [(ngModel)]="newBrand.address" placeholder="What is your brand address?"></ion-textarea>
+                        </ion-item>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="long-header">SOCIAL MEDIA</div>
+
+            <div class="body" padding>
+
+                <ion-row align-items-center class="form-detail">
+                    <ion-col>
+                        <div class="label">TWITTER</div>
+                        <div class="info">
+                            <ion-item class="no-design">
+                                <ion-input type="text" [(ngModel)]="newBrand.twitter" placeholder="Brand's twitter handle?"></ion-input>
+                            </ion-item>
+                        </div>
+                    </ion-col>
+                    <ion-col col-1 text-right>
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row align-items-center class="form-detail">
+                    <ion-col>
+                        <div class="label">FACEBOOK</div>
+                        <div class="info">
+                            <ion-item class="no-design">
+                                <ion-input type="text" [(ngModel)]="newBrand.facebook" placeholder="Brand's facebook page link?"></ion-input>
+                            </ion-item>
+                        </div>
+                    </ion-col>
+                    <ion-col col-1 text-right>
+                        <ion-icon name="mdi-facebook"></ion-icon>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row align-items-center class="form-detail">
+                    <ion-col>
+                        <div class="label">INSTAGRAM</div>
+                        <div class="info">
+                            <ion-item class="no-design">
+                                <ion-input type="text" [(ngModel)]="newBrand.instagram" placeholder="Brand's instagram handle?"></ion-input>
+                            </ion-item>
+                        </div>
+                    </ion-col>
+                    <ion-col col-1 text-right>
+                        <ion-icon name="mdi-instagram"></ion-icon>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row align-items-center class="form-detail">
+                    <ion-col>
+                        <div class="label">YOUTUBE</div>
+                        <div class="info">
+                            <ion-item class="no-design">
+                                <ion-input type="text" [(ngModel)]="newBrand.youtube" placeholder="Youtube link?"></ion-input>
+                            </ion-item>
+                        </div>
+                    </ion-col>
+                    <ion-col col-1 text-right>
+                        <ion-icon name="logo-youtube"></ion-icon>
+                    </ion-col>
+                </ion-row>
+
+            </div>
+
+            <div class="long-header">ECOMMERCE STORES</div>
+
+            <div class="body" padding>
+
+                <ion-row align-items-center class="form-detail">
+                    <ion-col>
+                        <div class="label">STORE LINK</div>
+                        <div class="info">
+                            <ion-item class="no-design">
+                                <ion-input type="url" [(ngModel)]="newBrand.store" placeholder="Link to you online store"></ion-input>
+                            </ion-item>
+                        </div>
+                    </ion-col>
+                    <ion-col col-1 text-right>
+                        <ion-icon name="mdi-shopping"></ion-icon>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row align-items-center class="form-detail">
+                    <ion-col>
+                        <div class="label">STORE LINK 2</div>
+                        <div class="info">
+                            <ion-item class="no-design">
+                                <ion-input type="url" [(ngModel)]="newBrand.store2" placeholder="Link to another online store"></ion-input>
+                            </ion-item>
+                        </div>
+                    </ion-col>
+                    <ion-col col-1 text-right>
+                        <ion-icon name="mdi-shopping"></ion-icon>
+                    </ion-col>
+                </ion-row>
+
+            </div>
+
+        <!-- </form> -->
+
+    </div>
+
+</ion-content>

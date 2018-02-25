@@ -1,0 +1,32 @@
+<ion-header no-border>
+
+    <ion-navbar color="primary">
+        <ion-title>{{header}}</ion-title>
+        <!-- <ion-buttons right>
+            <button ion-button icon-only clear color="white" (click)="close()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons> -->
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div class="top-content"></div>
+
+    <div class="main-content" padding>
+        <div [innerHTML]="content.content | sanitizeHtml"></div>
+
+        <ion-list *ngIf="content_name == 'contact'">
+            <div>
+                <ion-textarea rows="5" [(ngModel)]="message" placeholder="Send us a message and we'd get back to you"></ion-textarea>
+            </div>
+            <button ion-item text-center (click)="sendMessage()" color="primary">SEND</button>
+        </ion-list>
+    </div>
+
+
+
+</ion-content>

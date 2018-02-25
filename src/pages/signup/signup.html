@@ -1,0 +1,86 @@
+<ion-header no-border>
+    <ion-navbar color="transparent" no-border>
+        <ion-title></ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+    <div text-center class="header">
+        <h3>Sign Up</h3>
+    </div>
+
+    <div class="body" *ngIf="allStates">
+        <form (submit)="doSignup()">
+            <div class="form-group">
+                <ion-item class="no-design">
+                    <ion-input type="text" required placeholder="Full Name" class="round-input" [(ngModel)]="account.name" name="name"></ion-input>
+                </ion-item>
+            </div>
+            <div class="form-group">
+                <ion-item class="no-design">
+                    <ion-input type="text" required placeholder="Username" class="round-input" [(ngModel)]="account.username" name="username"></ion-input>
+                </ion-item>
+            </div>
+            <div class="form-group">
+                <ion-row>
+                    <ion-col>
+                        <ion-select [(ngModel)]="account.gender" class="round-input" name="gender" placeholder="Gender" required>
+                            <ion-option value="male">Male</ion-option>
+                            <ion-option value="female">Female</ion-option>
+                        </ion-select>
+                    </ion-col>
+                    <ion-col>
+                        <ion-select [(ngModel)]="account.status" class="round-input" name="status" placeholder="Status" required>
+                            <ion-option value="student">Student</ion-option>
+                            <ion-option value="employed">Employed</ion-option>
+                            <ion-option value="self-employed">Self Employed</ion-option>
+                        </ion-select>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <div class="form-group">
+                <ion-item class="no-design">
+                    <ion-input type="tel" required placeholder="Phone" class="round-input" [(ngModel)]="account.phone" name="phone"></ion-input>
+                </ion-item>
+            </div>
+            <div class="form-group">
+                <ion-item class="no-design">
+                    <ion-input type="email" required placeholder="Email" class="round-input" [(ngModel)]="account.email" name="email"></ion-input>
+                </ion-item>
+            </div>
+            <div class="form-group">
+                <ion-item class="no-design">
+                    <ion-input type="password" placeholder="Password" [(ngModel)]="account.password" name="password" class="round-input"></ion-input>
+                </ion-item>
+            </div>
+            <div class="form-group">
+                <ion-row>
+                    <ion-col>
+                        <ion-select [(ngModel)]="newstate" name="state" class="round-input" placeholder="State">
+                            <ion-option *ngFor="let state of states" value="{{state}}" (ionSelect)="loadLgas(state)">{{state}}</ion-option>
+                        </ion-select>
+                    </ion-col>
+                    <ion-col>
+                        <ion-select [(ngModel)]="newlga" name="lga" class="round-input" placeholder="LGA">
+                            <ion-option *ngFor="let lga of lgas" value="{{lga}}" (ionSelect)="setLocation(lga)">{{lga}}</ion-option>
+                        </ion-select>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <div class="form-group">
+                <ion-item class="no-design">
+                    <ion-input type="text" placeholder="Referal (optional)" [(ngModel)]="account.referal" name="referal" class="round-input"></ion-input>
+                </ion-item>
+            </div>
+            <div padding text-center>
+                <button [hidden]="loading" ion-button round color="dark" class="no-shadow">Sign Up</button>
+                <button [disabled]="loading" [hidden]="!loading" ion-button color="dark" round><ion-spinner></ion-spinner></button>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer" padding text-center>
+        <span (click)="gotoLogin()">Already have an account? Log in</span>
+    </div>
+</ion-content>

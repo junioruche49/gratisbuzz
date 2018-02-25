@@ -1,0 +1,82 @@
+page-ad-details {
+    .brand-item{
+        .location{
+            color: color($colors, primary);
+        }
+        .category{
+            font-size: 1.2rem;
+        }
+        .name{
+            font-weight: normal;
+        }
+        .image{
+            div{
+                width: 60px !important;
+                height: 60px !important;
+            }
+        }
+    }
+    .body{
+        .title{
+            font-weight: bold;
+            font-size: 1.6rem
+        }
+        .desc{
+            color: #7a7a7a;
+        }
+    }
+
+    .inter-box{
+        background-color: color($colors, silver);
+        box-shadow: none;
+        padding: 5px;
+        ion-col{
+            border-right: 1px solid color($colors, grey);
+            padding: 0px;
+            &:last-child{
+                border-right: 0px solid transparent;
+            }
+        }
+        button{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            color: color($colors, grey);
+            &.active{
+                color: color($colors, primary);
+            }
+        }
+    }
+
+    .comments{
+        background-color: color($colors, silver);
+
+        .new-comment{
+            margin-top: 10px;
+            img{
+                width: 90px;
+                margin: auto;
+            }
+            ion-textarea{
+                background-color: white;
+                textarea{
+                    margin-top: 0px;
+                    padding-top: 7px;
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+
+    .extra{
+        // background-color: silver;
+        font-size: 1rem;
+        .label{
+            color: color($colors, primary);
+        }
+        .value{
+            color: color($colors, dark);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    }
+}
