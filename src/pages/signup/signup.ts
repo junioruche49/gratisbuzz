@@ -92,7 +92,7 @@ export class SignupPage {
                 this.utils.showToast("Successfully registered. You have been logged in", 'bottom', 8000);
             this.navCtrl.setRoot("TabsPage");
             }else{
-                console.log(resp);
+                alert(resp.message);
             }
             
 

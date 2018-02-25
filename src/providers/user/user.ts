@@ -140,9 +140,6 @@ export class User {
             // If the API returned a successful response, mark the user as logged in
             if (res.status == 'success') {
                 this._loggedIn(res);
-            }else{
-                // this.utils.showToast(res.message);
-                alert(res.message);
             }
         }, err => {
             console.error('ERROR', err);
