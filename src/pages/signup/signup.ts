@@ -93,7 +93,7 @@ export class SignupPage {
             this.navCtrl.setRoot("TabsPage");
             }else{
                 alert(resp.message);
-            }
+            } 
             
 
             
