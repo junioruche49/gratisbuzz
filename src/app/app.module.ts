@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MomentModule } from 'angular2-moment';
 import { OneSignal } from '@ionic-native/onesignal';
+import { Pro } from '@ionic/pro';
 
 import { Camera } from '@ionic-native/camera';
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -43,6 +44,10 @@ export function provideSettings(storage: Storage) {
      */
     return new Settings(storage, {});
 }
+
+Pro.init('b7dd2379', {
+  appVersion: '1.2.0'
+})
 
 @NgModule({
   declarations: [
